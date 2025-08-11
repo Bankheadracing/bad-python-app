@@ -55,6 +55,7 @@ pipeline {
       steps {
         echo 'Semgrep scan process intiated'
         sh 'pipx install semgrep'
+        sh 'pipx ensurepath'
         sh 'semgrep ci'
         echo 'Semgrep scan process complete...'
       }
