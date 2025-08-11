@@ -28,7 +28,7 @@ pipeline {
 
         sh '#!/bin/bash'
         sh 'python3 -m venv venv' // Create a virtual environment
-        sh 'pip freeze > requirements.txt'
+        sh 'pipx freeze > requirements.txt'
         sh '. ./venv/bin/activate && pip install -r requirements.txt' // Activate and install
 
         echo 'Build process complete...'
@@ -54,7 +54,7 @@ pipeline {
     stage('Semgrep-Scan') {
       steps {
         echo 'Semgrep scan process intiated'
-        sh 'pip3 install semgrep'
+        sh 'pipx install semgrep'
         sh 'semgrep ci'
         echo 'Semgrep scan process complete...'
       }
