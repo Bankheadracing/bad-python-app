@@ -54,9 +54,11 @@ pipeline {
     stage('Semgrep-Scan') {
       steps {
         echo 'Semgrep scan process intiated'
-        sh 'pipx install semgrep'
-        sh 'pipx ensurepath'
-        sh 'semgrep ci'
+        sh '''docker pull semgrep/semgrep && \
+            docker run \
+            -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
+            -v "$(pwd):$(pwd)" --workdir $(pwd) \
+            semgrep/semgrep semgrep ci '''
         echo 'Semgrep scan process complete...'
       }
     }
