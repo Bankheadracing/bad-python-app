@@ -27,7 +27,7 @@ pipeline {
         echo 'Starting the build process...'
 
         sh '#!/bin/bash'
-        sh 'python3 -m venv venv' // Create a virtual environment
+        //sh 'python3 -m venv venv' // Create a virtual environment
         //sh 'pipx freeze > requirements.txt'
         //sh '. ./venv/bin/activate && pip install -r requirements.txt' // Activate and install
 
@@ -38,8 +38,8 @@ pipeline {
       steps {
         echo 'Running tests on application...'
         sh '#!/bin/bash'
-        sh 'python3 -m venv venv'
-        sh '. ./venv/bin/activate'
+        //sh 'python3 -m venv venv'
+        //sh '. ./venv/bin/activate'
 
         echo 'Tests completed on application...'
       }
